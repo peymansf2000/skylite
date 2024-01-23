@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   dio: ^5.4.0
+  equatable: ^2.0.5
   floor: ^1.4.2
   flutter:
     sdk: flutter
