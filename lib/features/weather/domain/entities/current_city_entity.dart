@@ -41,6 +41,20 @@ class CurrentCityEntity extends Equatable {
       this.cod});
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [
+        coord,
+        weather,
+        main,
+        base,
+        visibility,
+        wind,
+        rain,
+        clouds,
+        dt,
+        sys,
+        timezone,
+        id,
+        name,
+        cod
+      ];
 }

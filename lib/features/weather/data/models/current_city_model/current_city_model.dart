@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:skylite/features/weather/domain/entities/current_city_entity.dart';
 
-import 'current_city_model/clouds.dart';
-import 'current_city_model/coord.dart';
-import 'current_city_model/main.dart';
-import 'current_city_model/rain.dart';
-import 'current_city_model/sys.dart';
-import 'current_city_model/weather.dart';
-import 'current_city_model/wind.dart';
+import 'clouds.dart';
+import 'coord.dart';
+import 'main.dart';
+import 'rain.dart';
+import 'sys.dart';
+import 'weather.dart';
+import 'wind.dart';
 
 class CurrentCityModel extends CurrentCityEntity {
-  CurrentCityModel({
+  const CurrentCityModel({
     Coord? coord,
     List<Weather>? weather,
     String? base,
@@ -26,20 +25,20 @@ class CurrentCityModel extends CurrentCityEntity {
     String? name,
     int? cod,
   }) : super(
-            coord: null,
-            weather: null,
-            base: '',
-            main: null,
-            visibility: 0,
-            wind: null,
-            rain: null,
-            clouds: null,
-            dt: 0,
-            sys: null,
-            timezone: 0,
-            id: 0,
-            name: '',
-            cod: 0);
+            coord: coord,
+            weather: weather,
+            base: base,
+            main: main,
+            visibility: visibility,
+            wind: wind,
+            rain: rain,
+            clouds: clouds,
+            dt: dt,
+            sys: sys,
+            timezone: timezone,
+            id: id,
+            name: name,
+            cod: cod);
 
   factory CurrentCityModel.fromJson(Map<String, dynamic> json) {
     return CurrentCityModel(
