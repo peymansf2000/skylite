@@ -4,7 +4,7 @@ import 'package:skylite/features/weather/data/models/current_city_model/current_
 
 import 'package:skylite/features/weather/domain/entities/current_city_entity.dart';
 
-import '../../domain/repositories/weather_repository.dart';
+import '../../domain/repository/weather_repository.dart';
 import '../data_source/remote/api_provider.dart';
 
 class WeatherRepository implements IWeatherRepository {
