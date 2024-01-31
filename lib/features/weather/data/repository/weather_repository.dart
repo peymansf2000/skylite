@@ -8,14 +8,14 @@ import '../../domain/repository/weather_repository.dart';
 import '../data_source/remote/api_provider.dart';
 
 class WeatherRepository implements IWeatherRepository {
-  ApiProvider apiProvider;
-  WeatherRepository(this.apiProvider);
+  final ApiProvider _apiProvider;
+  WeatherRepository(this._apiProvider);
 
   @override
   Future<DataState<CurrentCityEntity>> fetchCurrentWeatherData(
       String cityName) async {
     try {
-      Response response = await apiProvider.callCurrentWeather(cityName);
+      Response response = await _apiProvider.callCurrentWeather(cityName);
 
       if (response.statusCode == 200) {
         CurrentCityEntity currentCityEntity =
