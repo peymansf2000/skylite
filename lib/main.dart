@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:skylite/locator.dart';
 
 import 'core/widgets/main_wrapper.dart';
 
-void main() {
+void main() async {
+  await setup();
   runApp(const MainApp());
 }
 
