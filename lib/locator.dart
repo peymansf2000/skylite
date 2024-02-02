@@ -5,7 +5,7 @@ import 'package:skylite/features/weather/domain/repository/weather_repository.da
 import 'package:skylite/features/weather/domain/usecases/get_current_weather_usecase.dart';
 import 'package:skylite/features/weather/presentation/bloc/home_bloc.dart';
 
-GetIt locator = GetIt.instance();
+GetIt locator = GetIt.instance;
 
 setup() {
   locator.registerSingleton<ApiProvider>(ApiProvider());
