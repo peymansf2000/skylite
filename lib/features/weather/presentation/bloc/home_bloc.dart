@@ -12,13 +12,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this.getCurrentWeatherUsecase) : super(HomeLoading()) {
     on<HomeStarted>((event, emit) async {
       emit(HomeLoading());
+
       DataState<CurrentCityEntity> dataState =
           await getCurrentWeatherUsecase(event.cityName);
-      switch (dataState.runtimeType) {
-        case (DataSuccess):
-          emit(HomeCompleted(currentCityEntity: dataState.data!));
-        case (DataFailed):
-          emit(HomeError(message: dataState.error!));
+
+      if (dataState is DataSuccess) {
+        emit(HomeCompleted(currentCityEntity: dataState.data!));
+      } else if (dataState is DataFailed) {
+        emit(HomeError(message: dataState.error!));
       }
     });
   }
