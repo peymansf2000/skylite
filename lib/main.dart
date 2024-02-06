@@ -16,20 +16,24 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  final Color systemColor = Colors.black;
+
   @override
   Widget build(BuildContext context) {
     // Set the status bar color dynamically based on the theme primary color
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Theme.of(context).primaryColor,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarDividerColor: Theme.of(context).primaryColor,
-        systemNavigationBarColor: Theme.of(context).primaryColor));
+        statusBarColor: systemColor,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarDividerColor: systemColor,
+        systemNavigationBarColor: systemColor));
 
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MultiBlocProvider(
-            providers: [BlocProvider(create: (_) => locator<HomeBloc>())],
-            child: MainWrapper()));
+      debugShowCheckedModeBanner: false,
+      home: MultiBlocProvider(
+          providers: [BlocProvider(create: (_) => locator<HomeBloc>())],
+          child: MainWrapper()),
+      theme: ThemeData(primaryColor: Colors.white),
+    );
   }
 }
