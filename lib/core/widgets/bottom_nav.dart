@@ -10,9 +10,9 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Theme.of(context).primaryColor,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.black,
+      backgroundColor: Colors.black,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white,
       elevation: 0,
       onTap: (value) => _controller.animateToPage(value,
           duration: const Duration(milliseconds: 300), curve: Curves.easeIn),
