@@ -17,6 +17,9 @@ final class HomeCompleted extends HomeState {
   final CurrentCityEntity currentCityEntity;
 
   const HomeCompleted({required this.currentCityEntity});
+
+  @override
+  List<Object> get props => [currentCityEntity];
 }
 
 final class HomeLoading extends HomeState {}
