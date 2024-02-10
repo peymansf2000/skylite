@@ -14,12 +14,12 @@ final class HomeError extends HomeState {
 }
 
 final class HomeCompleted extends HomeState {
-  final CurrentCityEntity currentCityEntity;
+  final WeatherEntity weatherEntity;
 
-  const HomeCompleted({required this.currentCityEntity});
+  const HomeCompleted({required this.weatherEntity});
 
   @override
-  List<Object> get props => [currentCityEntity];
+  List<Object> get props => [weatherEntity];
 }
 
 final class HomeLoading extends HomeState {}

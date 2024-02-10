@@ -1,6 +1,6 @@
-class ForecastParams {
-  final double lat;
-  final double lon;
+class SuggestionParams {
+  final String name;
+  final String location;
 
-  ForecastParams({required this.lat, required this.lon});
+  SuggestionParams({required this.name, required this.location});
 }

@@ -1,13 +1,13 @@
 class Rain {
-  double? p1;
+  double? h1;
 
-  Rain({this.p1});
+  Rain({this.h1});
 
   factory Rain.fromJson(Map<String, dynamic> json) => Rain(
-        p1: (json['1h'] as num?)?.toDouble(),
+        h1: (json['1h'] as num?)?.toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
-        '1h': p1,
+        '1h': h1,
       };
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:skylite/features/weather/domain/entities/current_city_entity.dart';
+import 'package:skylite/features/weather/domain/entities/weather_entity.dart';
 
 class TemperaturePage extends StatelessWidget {
   const TemperaturePage({
     super.key,
     required this.height,
-    required this.currentCityEntity,
+    required this.weatherEntity,
   });
 
   final double height;
-  final CurrentCityEntity currentCityEntity;
+  final WeatherEntity weatherEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,53 +20,60 @@ class TemperaturePage extends StatelessWidget {
           height: height / 15,
         ),
         Text(
-          currentCityEntity.name!,
+          weatherEntity.name,
           style: const TextStyle(
               fontSize: 30,
               fontStyle: FontStyle.normal,
               fontWeight: FontWeight.bold),
         ),
-        Text(
-          currentCityEntity.weather![0].description!,
-          style: const TextStyle(
-            fontSize: 18,
+        SizedBox(
+          height: height / 50,
+        ),
+        SizedBox(
+          width: 250,
+          child: Text(
+            weatherEntity.day[0].description,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 13, fontStyle: FontStyle.italic),
           ),
         ),
-        Image.asset(
-            'assets/icons/${currentCityEntity.weather![0].icon!}@2x.png'),
+        Image.asset('assets/icons/${weatherEntity.day[0].icon}@2x.png'),
         Text(
-          '${currentCityEntity.main!.temp!.round()}\u00B0',
+          '${weatherEntity.day[0].temp}\u00B0',
           style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: height / 50,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               children: [
-                Text('Max',
+                const Text('Max',
                     style:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 Text(
-                  '${currentCityEntity.main!.tempMax!.round().toString()}\u00B0',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  '${weatherEntity.day[0].tempMax.toString()}\u00B0',
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              margin: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               color: Colors.black,
               width: 1.5,
               height: 40,
             ),
             Column(
               children: [
-                Text('Min',
+                const Text('Min',
                     style:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text(
-                    '${currentCityEntity.main!.tempMin!.round().toString()}\u00B0',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                Text('${weatherEntity.day[0].tempMin.toString()}\u00B0',
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
               ],
             )
           ],
