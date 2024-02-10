@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:isar/isar.dart';
 import 'package:skylite/features/weather/presentation/bloc/home_bloc.dart';
 import 'package:skylite/locator.dart';
 
@@ -8,6 +9,11 @@ import 'core/widgets/main_wrapper.dart';
 
 void main() async {
   await setup();
+  final dir = await getApplicationDocumentsDirectory();
+  final isar = await Isar.open(
+    [UserSchema],
+    directory: dir.path,
+  );
   runApp(
     const MyApp(),
   );
