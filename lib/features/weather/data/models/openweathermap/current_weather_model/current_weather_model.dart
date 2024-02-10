@@ -1,5 +1,6 @@
-import 'package:skylite/features/weather/domain/entities/current_city_entity.dart';
+import 'package:skylite/features/weather/data/models/weather_model.dart';
 
+import '../../day_model.dart';
 import 'clouds.dart';
 import 'coord.dart';
 import 'main.dart';
@@ -8,40 +9,41 @@ import 'sys.dart';
 import 'weather.dart';
 import 'wind.dart';
 
-class CurrentCityModel extends CurrentCityEntity {
-  const CurrentCityModel({
-    Coord? coord,
-    List<Weather>? weather,
-    String? base,
-    Main? main,
-    int? visibility,
-    Wind? wind,
-    Rain? rain,
-    Clouds? clouds,
-    int? dt,
-    Sys? sys,
-    int? timezone,
-    int? id,
-    String? name,
-    int? cod,
-  }) : super(
-            coord: coord,
-            weather: weather,
-            base: base,
-            main: main,
-            visibility: visibility,
-            wind: wind,
-            rain: rain,
-            clouds: clouds,
-            dt: dt,
-            sys: sys,
-            timezone: timezone,
-            id: id,
-            name: name,
-            cod: cod);
+class CurrentWeatherModel {
+  Coord? coord;
+  List<Weather>? weather;
+  String? base;
+  Main? main;
+  int? visibility;
+  Wind? wind;
+  Rain? rain;
+  Clouds? clouds;
+  int? dt;
+  Sys? sys;
+  int? timezone;
+  int? id;
+  String? name;
+  int? cod;
 
-  factory CurrentCityModel.fromJson(Map<String, dynamic> json) {
-    return CurrentCityModel(
+  CurrentWeatherModel({
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.rain,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,
+  });
+
+  factory CurrentWeatherModel.fromJson(Map<String, dynamic> json) {
+    return CurrentWeatherModel(
       coord: json['coord'] == null
           ? null
           : Coord.fromJson(json['coord'] as Map<String, dynamic>),
@@ -89,4 +91,20 @@ class CurrentCityModel extends CurrentCityEntity {
         'name': name,
         'cod': cod,
       };
+  WeatherModel getWeatherModel() {
+    return WeatherModel(
+      address: name!,
+      day: DayModel(
+          timeStamp: dt!,
+          tempMax: main!.tempMax!.round(),
+          tempMin: main!.tempMin!.round(),
+          temp: main!.temp!.round(),
+          feelsLike: main!.feelsLike!.round(),
+          humidity: main!.humidity!,
+          pressure: main!.pressure!,
+          description: weather![0].description!,
+          icon: weather![0].icon!),
+      name: null,
+    );
+  }
 }

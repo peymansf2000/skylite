@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:skylite/core/params/forecast_params.dart';
 import 'package:skylite/core/resources/data_state.dart';
-import 'package:skylite/features/weather/domain/entities/current_city_entity.dart';
+
+import 'package:skylite/features/weather/domain/entities/weather_entity.dart';
 import 'package:skylite/features/weather/domain/usecases/get_current_weather_usecase.dart';
 
 part 'home_event.dart';
@@ -13,11 +15,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeStarted>((event, emit) async {
       emit(HomeLoading());
 
-      DataState<CurrentCityEntity> dataState =
-          await getCurrentWeatherUsecase(event.cityName);
+      DataState<WeatherEntity> dataState =
+          await getCurrentWeatherUsecase(event.params);
 
       if (dataState is DataSuccess) {
-        emit(HomeCompleted(currentCityEntity: dataState.data!));
+        emit(HomeCompleted(weatherEntity: dataState.data!));
       } else if (dataState is DataFailed) {
         emit(HomeError(message: dataState.error!));
       }

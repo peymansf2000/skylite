@@ -16,7 +16,7 @@ class MainWrapper extends StatelessWidget {
           decoration: const BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/images/dark_background.jpg'))),
+                  image: AssetImage('assets/images/background.png'))),
           child: PageView(
             controller: _controller,
             children: screens,

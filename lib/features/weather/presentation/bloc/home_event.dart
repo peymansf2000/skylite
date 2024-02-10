@@ -8,7 +8,7 @@ sealed class HomeEvent extends Equatable {
 }
 
 class HomeStarted extends HomeEvent {
-  final String cityName;
+  final SuggestionParams params;
 
-  const HomeStarted({required this.cityName});
+  const HomeStarted({required this.params});
 }
