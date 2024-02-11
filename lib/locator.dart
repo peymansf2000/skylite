@@ -10,16 +10,16 @@ import 'package:skylite/features/weather/presentation/bloc/home_bloc.dart';
 
 GetIt locator = GetIt.instance;
 
-setup()async {
-    final dir = await getApplicationDocumentsDirectory();
-    final isar = await Isar.open(
-    [CitySchema],
-    directory: dir.path,
-  );
-  locator.registerSingleton()
+setup() async {
   locator.registerSingleton<ApiProvider>(ApiProvider());
   locator.registerSingleton<IWeatherRepository>(WeatherRepository(locator()));
   locator.registerSingleton<GetCurrentWeatherUsecase>(
       GetCurrentWeatherUsecase(locator()));
   locator.registerSingleton<HomeBloc>(HomeBloc(locator()));
+
+  final dir = await getApplicationDocumentsDirectory();
+  final isar = await Isar.open(
+    [CitySchema],
+    directory: dir.path,
+  );
 }
