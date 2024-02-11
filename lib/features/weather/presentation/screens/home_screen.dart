@@ -108,7 +108,145 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Divider(
                     thickness: 2,
                     color: Colors.black,
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "wind speed",
+                              style: TextStyle(
+                                  fontSize: height * 0.017,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                "${weatherEntity.day[0].windSpeed} m/s",
+                                style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            color: Colors.black,
+                            height: 30,
+                            width: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                "sunrise",
+                                style: TextStyle(
+                                    fontSize: height * 0.017,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  formatTimestampToHourMinutes(((weatherEntity
+                                                  .day[0].sunriseEpoch +
+                                              weatherEntity.tzoffset * 3600) *
+                                          1000)
+                                      .toInt()),
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            color: Colors.black,
+                            height: 30,
+                            width: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                "sunset",
+                                style: TextStyle(
+                                  fontSize: height * 0.017,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  formatTimestampToHourMinutes(((weatherEntity
+                                                  .day[0].sunsetEpoch +
+                                              weatherEntity.tzoffset * 3600) *
+                                          1000)
+                                      .toInt()),
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            color: Colors.black,
+                            height: 30,
+                            width: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                "humidity",
+                                style: TextStyle(
+                                  fontSize: height * 0.017,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  "${weatherEntity.day[0].humidity}%",
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             );
@@ -130,4 +268,15 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+}
+
+String formatTimestampToHourMinutes(int timestamp) {
+  // Convert timestamp to DateTime
+  DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
+
+  // Format the DateTime as "hour:minutes"
+  String formattedTime =
+      '${dateTime.hour}:${dateTime.minute.toString().padLeft(2, '0')}';
+
+  return formattedTime;
 }

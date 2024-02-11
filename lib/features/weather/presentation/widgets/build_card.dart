@@ -16,10 +16,12 @@ class BuildCard extends StatelessWidget {
     return Column(
       children: [
         Text(getDatefromTimeStamp(day.timeStamp),
-            style: const TextStyle(fontStyle: FontStyle.italic)),
+            style: const TextStyle(
+                fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
         Image.asset('assets/icons/${day.icon}@2x.png'),
         Text('${day.tempMax.toString()}\u00B0',
-            style: const TextStyle(fontStyle: FontStyle.italic))
+            style: const TextStyle(
+                fontStyle: FontStyle.italic, fontWeight: FontWeight.bold))
       ],
     );
   }
