@@ -103,8 +103,12 @@ class CurrentWeatherModel {
           humidity: main!.humidity!,
           pressure: main!.pressure!,
           description: weather![0].description!,
-          icon: weather![0].icon!),
+          icon: weather![0].icon!,
+          sunsetEpoch: 0,
+          sunriseEpoch: 0,
+          windSpeed: 0.0),
       name: null,
+      tzoffset: null,
     );
   }
 }

@@ -81,12 +81,16 @@ class CurrentPlusForecastModel {
           humidity: element.humidity!.round(),
           pressure: element.pressure!.round(),
           description: element.conditions!,
-          icon: _getIcon(element.icon!)));
+          icon: _getIcon(element.icon!),
+          sunsetEpoch: element.sunsetEpoch!,
+          sunriseEpoch: element.sunriseEpoch!,
+          windSpeed: element.windspeed!));
     }
     return WeatherModel(
         address: _extractCity(resolvedAddress!),
         day: daysModelList,
-        name: name);
+        name: name,
+        tzoffset: tzoffset);
   }
 
   String _getIcon(element) {
