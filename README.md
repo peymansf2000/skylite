@@ -1,14 +1,29 @@
 ## WeatherAppFlutter
 
-🌦️ Flutter weather app with Clean Architecture, Dependency Injection, Isar Database, and Visual Crossing Weather API integration.
+This is a weather application in which you can monitor the weather in all cities of the world This application displays different information such as temp, max and min temp, Weather in the next 15 days, humidity, wind speed, sunrise, sunset, etc.
 
-## Features
-**• Clean Architecture**
+## Built With
+Technologies used in this project:
 
-**• Dependency Injection:** Uses Get_it for modularity and ease of testing.
+**•Dart**
 
-**• Isar Database** 
+**•Flutter**
 
-**• Weather Data:** Real-time weather information fetched from Visual Crossing Weather API.
+**•Clean Architecture**
 
-**• Responsive UI**
+**•Bloc statemanagment**
+
+**•Repository pattern**
+
+**•Lint**
+
+**•Mock Test**
+
+**•Get It (Dependency Injection)**
+
+**•Isar Database**
+
+**•fl chart**
+
+**•Dio**
+
